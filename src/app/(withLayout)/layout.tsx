@@ -1,17 +1,34 @@
+"use client";
 import Contents from "@/components/ui/Contents";
-import Sidebar from "@/components/ui/Sidebar";
+import SideBar from "@/components/ui/Sidebar";
+import { isLoggedIn } from "@/service/auth.service";
 import { Layout } from "antd";
-import React from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const DashboardLayout = ({
-    children,
-}: React.PropsWithChildren<React.ReactNode>) => {
-    return (
-        <Layout hasSider>
-            <Sidebar />
-            <Contents>{children}</Contents>
-        </Layout>
-    );
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const userLoggedIn = isLoggedIn();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!userLoggedIn) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
+
+  if (!isLoading) {
+    return <p>Loading......</p>;
+  }
+
+  return (
+    <Layout hasSider>
+      <SideBar />
+      <Contents>{children}</Contents>
+    </Layout>
+  );
 };
 
 export default DashboardLayout;
+ 

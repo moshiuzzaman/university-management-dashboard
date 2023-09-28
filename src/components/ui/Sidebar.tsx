@@ -1,16 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { Layout, Menu } from "antd";
+import { getUserInfo } from "@/service/auth.service";
 import { sidebarItems } from "@/constants/sibarItems";
-import { USER_ROLE } from "@/constants/role";
+
+
 
 const { Sider } = Layout;
 
-const Sidebar = () => {
-    const role = USER_ROLE.STUDENT;
+const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
+
+    // const role = USER_ROLE.ADMIN;
+    const { role } = getUserInfo() as any;
+    // console.log(role);
+
     return (
         <Sider
             collapsible
@@ -35,16 +40,16 @@ const Sidebar = () => {
                     marginBottom: "1rem",
                 }}
             >
-                <div className="demo-logo-vertical" />
-                <Menu
-                    theme="dark"
-                    defaultSelectedKeys={["1"]}
-                    mode="inline"
-                    items={sidebarItems(role)}
-                />
+                UMS
             </div>
+            <Menu
+                theme="dark"
+                defaultSelectedKeys={["1"]}
+                mode="inline"
+                items={sidebarItems(role)}
+            />
         </Sider>
     );
 };
 
-export default Sidebar;
+export default SideBar;

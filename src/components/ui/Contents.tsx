@@ -2,6 +2,7 @@
 
 import { Content } from "antd/es/layout/layout";
 import BreadCrumb from "./BreadCrumb";
+import Header from "./Header";
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
     const base = "admin";
@@ -11,6 +12,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
                 minHeight: "100vh",
             }}
         >
+            <Header/>
             <BreadCrumb
                 items={[
                     {
