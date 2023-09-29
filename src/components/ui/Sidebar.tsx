@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Layout, Menu } from "antd";
-import { getUserInfo } from "@/service/auth.service";
+import { getUserInfo } from "@/services/auth.service";
 import { sidebarItems } from "@/constants/sibarItems";
 
 

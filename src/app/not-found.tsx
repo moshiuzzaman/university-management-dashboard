@@ -1,12 +1,17 @@
-import React from "react";
+import { Button, Row } from "antd";
 
-const NotFound = () => {
-    return (
-        <div>
-            <h1>404</h1>
-            <p>Page not found</p>
-        </div>
-    );
+const NotFoundPage = () => {
+  return (
+    <Row
+      justify="center"
+      align="middle"
+      style={{
+        height: "100vh",
+      }}
+    >
+      <h1>404!!! Page Not Found!</h1>
+    </Row>
+  );
 };
 
-export default NotFound;
+export default NotFoundPage;
