@@ -6,8 +6,8 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   id: string;

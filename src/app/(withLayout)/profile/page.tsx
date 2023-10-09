@@ -1,9 +1,9 @@
-import React from 'react'
-
-const Profile = () => {
+const ProfilePage = () => {
   return (
-    <h1>Welcome back to your profile </h1>
-  )
-}
+    <div>
+      <h1>Welcome back to your profile</h1>
+    </div>
+  );
+};
 
-export default Profile
+export default ProfilePage;

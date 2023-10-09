@@ -1,31 +1,28 @@
 "use client";
-
-import { Content } from "antd/es/layout/layout";
-import BreadCrumb from "./BreadCrumb";
+import { Layout } from "antd";
 import Header from "./Header";
-import { getUserInfo } from "@/services/auth.service";
+
+const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
-    const { role } = getUserInfo() as { role: string };
+  return (
+    <Content
+      style={{
+        minHeight: "100vh",
+        color: "black",
+      }}
+    >
+      <Header />
 
-    return (
-        <Content
-            style={{
-                minHeight: "100vh",
-            }}
-        >
-            <Header />
-            <BreadCrumb
-                items={[
-                    {
-                        label: `${role}`,
-                        link: `/${role}`,
-                    },
-                ]}
-            />
-            {children}
-        </Content>
-    );
+      <div
+        style={{
+          padding: "10px",
+        }}
+      >
+        {children}
+      </div>
+    </Content>
+  );
 };
 
 export default Contents;

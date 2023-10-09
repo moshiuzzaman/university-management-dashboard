@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 export const sidebarItems = (role: string) => {
-
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: "Profile",
@@ -20,7 +19,7 @@ export const sidebarItems = (role: string) => {
       children: [
         {
           label: <Link href={`/${role}`}>Account Profile</Link>,
-          key: `/${role}`,
+          key: `/${role}/profile`,
         },
         {
           label: <Link href={`/${role}/change-password`}>Change Password</Link>,
@@ -106,14 +105,6 @@ export const sidebarItems = (role: string) => {
           ),
           key: `/${role}/offered-course-section`,
         },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-schedule`}>
-              Course schedules
-            </Link>
-          ),
-          key: `/${role}/offered-course-schedule`,
-        },
       ],
     },
   ];
@@ -122,16 +113,15 @@ export const sidebarItems = (role: string) => {
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
-      label: <Link href={`/${role}/manage-admin`}>Manage Admin</Link>,
+      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/manage-admin`,
+      key: `/${role}/admin`,
     },
     {
-      label: <Link href={`/${role}/manage-user`}>Manage User</Link>,
+      label: <Link href={`/${role}/user`}>Manage User</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/manage-user`,
+      key: `/${role}/user`,
     },
-    
     {
       label: "Management",
       key: "management",
