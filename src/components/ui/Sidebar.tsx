@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Layout, Menu } from "antd";
 import { getUserInfo } from "@/services/auth.service";
-import { sidebarItems } from "@/constants/sibarItems";
+import { sidebarItems } from "@/constants/sidebarItems";
 
 
 

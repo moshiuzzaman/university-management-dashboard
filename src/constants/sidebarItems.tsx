@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 export const sidebarItems = (role: string) => {
+
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: "Profile",
@@ -18,8 +19,8 @@ export const sidebarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
-          key: `/${role}/profile`,
+          label: <Link href={`/${role}`}>Account Profile</Link>,
+          key: `/${role}`,
         },
         {
           label: <Link href={`/${role}/change-password`}>Change Password</Link>,
@@ -121,26 +122,16 @@ export const sidebarItems = (role: string) => {
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
-      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
+      label: <Link href={`/${role}/manage-admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/admin`,
+      key: `/${role}/manage-admin`,
     },
     {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
+      label: <Link href={`/${role}/manage-user`}>Manage User</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/user`,
+      key: `/${role}/manage-user`,
     },
-    {
-      label: "Manage permission",
-      key: "manage-permission",
-      icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/permission`}>View permissions</Link>,
-          key: `/${role}/permission`,
-        },
-      ],
-    },
+    
     {
       label: "Management",
       key: "management",

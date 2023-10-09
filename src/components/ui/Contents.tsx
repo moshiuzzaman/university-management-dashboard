@@ -3,25 +3,23 @@
 import { Content } from "antd/es/layout/layout";
 import BreadCrumb from "./BreadCrumb";
 import Header from "./Header";
+import { getUserInfo } from "@/services/auth.service";
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
-    const base = "admin";
+    const { role } = getUserInfo() as { role: string };
+
     return (
         <Content
             style={{
                 minHeight: "100vh",
             }}
         >
-            <Header/>
+            <Header />
             <BreadCrumb
                 items={[
                     {
-                        label: `${base}`,
-                        link: `/${base}`,
-                    },
-                    {
-                        label: "student",
-                        link: `/${base}/student`,
+                        label: `${role}`,
+                        link: `/${role}`,
                     },
                 ]}
             />

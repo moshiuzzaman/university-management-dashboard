@@ -1,55 +1,59 @@
-import { Avatar, Button, Dropdown, Layout, MenuProps, Row, Space, message } from "antd";
+import { Avatar, Button, Dropdown, Layout, MenuProps, Row, Space } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
-import { removeUserInfo } from "@/services/auth.service";
 const { Header: AntHeader } = Layout;
 
 const Header = () => {
-    const router = useRouter();
+  const router = useRouter();
 
-    const logOut = () => {
-        removeUserInfo(authKey);
-        router.push("/login");
-        message.success("User logged out successfully!");
+  const logOut = () => {
+    removeUserInfo(authKey);
+    router.push("/login");
+  };
 
-    };
-
-    
-
-    const items: MenuProps["items"] = [
-        {
-            key: "0",
-            label: (
-                <Button onClick={logOut} type="text" danger>
-                    Logout
-                </Button>
-            ),
-        },
-    ];
-    return (
-        <AntHeader
-            style={{
-                background: "#fff",
-            }}
+  const items: MenuProps["items"] = [
+    {
+      key: "0",
+      label: (
+        <Button onClick={logOut} type="text" danger>
+          Logout
+        </Button>
+      ),
+    },
+  ];
+  const { role } = getUserInfo() as any;
+  return (
+    <AntHeader
+      style={{
+        background: "#fff",
+      }}
+    >
+      <Row
+        justify="end"
+        align="middle"
+        style={{
+          height: "100%",
+        }}
+      >
+        <p
+          style={{
+            margin: "0px 5px",
+          }}
         >
-            <Row
-                justify="end"
-                align="middle"
-                style={{
-                    height: "100%",
-                }}
-            >
-                <Dropdown menu={{ items }}>
-                    <a>
-                        <Space wrap size={16}>
-                            <Avatar size="large" icon={<UserOutlined />} />
-                        </Space>
-                    </a>
-                </Dropdown>
-            </Row>
-        </AntHeader>
-    );
+          {role}
+        </p>
+        <Dropdown menu={{ items }}>
+          <a>
+            <Space wrap size={16}>
+              <Avatar size="large" icon={<UserOutlined />} />
+            </Space>
+          </a>
+        </Dropdown>
+      </Row>
+    </AntHeader>
+  );
 };
 
 export default Header;
